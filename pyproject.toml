@@ -1,14 +1,13 @@
 [project]
 name = "synapsefi_baas"
-authors = [
-    { name = "ME", email = "mamamialezatos@gmail.com"}
-]
+authors = [{ name = "ME", email = "mamamialezatos@gmail.com" }]
 description = "Banking as a service"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]
 dependencies = [
     # "frappe~=15.0.0" # Installed and managed by bench.
+    "synapsepy==1.2.6",
 ]
 
 [build-system]

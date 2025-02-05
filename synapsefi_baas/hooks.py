@@ -9,6 +9,9 @@ app_license = "mit"
 # ------------------
 
 # required_apps = []
+welcome_email = "synapsefi_baas.setup.utils.welcome_email"
+
+brand_html = '<div><img src="https://help.synapsefi.com/hc/theming_assets/01HZPM9EYF4MQVX2VA2YEB9RNJ"/></div>'
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -83,7 +86,7 @@ app_license = "mit"
 # ------------
 
 # before_install = "synapsefi_baas.install.before_install"
-# after_install = "synapsefi_baas.install.after_install"
+after_install = "synapsefi_baas.install.after_install"
 
 # Uninstallation
 # ------------
@@ -129,9 +132,7 @@ app_license = "mit"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {"ToDo": "custom_app.overrides.CustomToDo"}
 
 # Document Events
 # ---------------
@@ -148,23 +149,24 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"synapsefi_baas.tasks.all"
-# 	],
-# 	"daily": [
-# 		"synapsefi_baas.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"synapsefi_baas.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"synapsefi_baas.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"synapsefi_baas.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+    "cron": {"*/10 * * * * *": ["synapsefi_baas.jobs.hello_jobs.hello_world"]}
+    # "all": [
+    # 	"synapsefi_baas.tasks.all"
+    # ],
+    # "daily": [
+    # 	"synapsefi_baas.tasks.daily"
+    # ],
+    # "hourly": [
+    # 	"synapsefi_baas.tasks.hourly"
+    # ],
+    # "weekly": [
+    # 	"synapsefi_baas.tasks.weekly"
+    # ],
+    # "monthly": [
+    # 	"synapsefi_baas.tasks.monthly"
+    # ],
+}
 
 # Testing
 # -------
@@ -241,4 +243,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-

@@ -1,0 +1,36 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-02-05 14:14:43.950144",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "phone_number_section",
+  "data_iylj"
+ ],
+ "fields": [
+  {
+   "fieldname": "phone_number_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "data_iylj",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_virtual": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-02-05 14:17:49.133272",
+ "modified_by": "Administrator",
+ "module": "Synapsefi Baas",
+ "name": "User Phone Number",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

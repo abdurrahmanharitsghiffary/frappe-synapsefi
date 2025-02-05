@@ -1,0 +1,191 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-02-05 13:18:18.028722",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "synaptic_user_section",
+  "phone_numbers_column",
+  "_id",
+  "supp_id",
+  "flag",
+  "flag_code",
+  "permission",
+  "permission_code",
+  "watchlists",
+  "column_break_mlil",
+  "date_joined",
+  "last_updated",
+  "account_closure_date",
+  "is_trusted",
+  "is_hidden",
+  "is_business",
+  "extra_security",
+  "public_note",
+  "section_break_anol",
+  "documerts",
+  "legal_names",
+  "logins",
+  "phone_numbers"
+ ],
+ "fields": [
+  {
+   "fieldname": "phone_numbers_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "ID",
+   "read_only": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "account_closure_date",
+   "fieldtype": "Date",
+   "label": "Account Closure Date"
+  },
+  {
+   "default": "Should be linked to docs",
+   "fieldname": "documerts",
+   "fieldtype": "Table",
+   "label": "Documerts",
+   "options": "Synaptic Document"
+  },
+  {
+   "fieldname": "date_joined",
+   "fieldtype": "Date",
+   "label": "Date Joined",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "extra_security",
+   "fieldtype": "Check",
+   "label": "Extra Security"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_business",
+   "fieldtype": "Check",
+   "label": "Is Business"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_trusted",
+   "fieldtype": "Check",
+   "label": "Is Trusted"
+  },
+  {
+   "fieldname": "last_updated",
+   "fieldtype": "Date",
+   "label": "Last Updated",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "public_note",
+   "fieldtype": "Text",
+   "label": "Public Note"
+  },
+  {
+   "fieldname": "supp_id",
+   "fieldtype": "Data",
+   "label": "Supp Id"
+  },
+  {
+   "fieldname": "flag",
+   "fieldtype": "Data",
+   "label": "Flag",
+   "options": "NOT-FLAGGED"
+  },
+  {
+   "fieldname": "flag_code",
+   "fieldtype": "Data",
+   "label": "Flag Code"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_hidden",
+   "fieldtype": "Check",
+   "label": "Is Hidden"
+  },
+  {
+   "fieldname": "legal_names",
+   "fieldtype": "Table",
+   "label": "Legal Names",
+   "options": "User Legal Name"
+  },
+  {
+   "fieldname": "logins",
+   "fieldtype": "Table",
+   "label": "Logins",
+   "options": "Synaptic User Login"
+  },
+  {
+   "fieldname": "permission",
+   "fieldtype": "Data",
+   "label": "Permission",
+   "options": "UNVERIFIED"
+  },
+  {
+   "fieldname": "permission_code",
+   "fieldtype": "Data",
+   "label": "Permission Code"
+  },
+  {
+   "fieldname": "phone_numbers",
+   "fieldtype": "Table",
+   "label": "Phone Numbers",
+   "options": "User Phone Number"
+  },
+  {
+   "fieldname": "watchlists",
+   "fieldtype": "Data",
+   "label": "Watchlists",
+   "options": "PENDING"
+  },
+  {
+   "fieldname": "column_break_mlil",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_anol",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "synaptic_user_section",
+   "fieldtype": "Section Break",
+   "label": "Synaptic User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_virtual": 1,
+ "links": [],
+ "modified": "2025-02-05 14:22:42.637330",
+ "modified_by": "Administrator",
+ "module": "Synapsefi Baas",
+ "name": "Synaptic User",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

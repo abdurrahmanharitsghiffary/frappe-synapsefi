@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-02-05 13:33:43.480674",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "loler"
+ ],
+ "fields": [
+  {
+   "fieldname": "loler",
+   "fieldtype": "Data",
+   "label": "Loler"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_virtual": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-02-05 13:33:51.844614",
+ "modified_by": "Administrator",
+ "module": "Synapsefi Baas",
+ "name": "Synaptic Sample Child Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

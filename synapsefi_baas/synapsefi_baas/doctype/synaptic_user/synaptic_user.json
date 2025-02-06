@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "creation": "2025-02-05 13:18:18.028722",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -8,23 +7,24 @@
   "synaptic_user_section",
   "phone_numbers_column",
   "_id",
+  "account_closure_date",
   "supp_id",
   "flag",
   "flag_code",
   "permission",
   "permission_code",
   "watchlists",
+  "cip_tag",
   "column_break_mlil",
   "date_joined",
   "last_updated",
-  "account_closure_date",
   "is_trusted",
   "is_hidden",
   "is_business",
   "extra_security",
   "public_note",
   "section_break_anol",
-  "documerts",
+  "documents",
   "legal_names",
   "logins",
   "phone_numbers"
@@ -35,90 +35,98 @@
    "fieldtype": "Column Break"
   },
   {
+   "description": "Primary Key of the user.",
    "fieldname": "_id",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "ID",
+   "label": "User Id",
    "read_only": 1,
-   "reqd": 1,
    "unique": 1
   },
   {
+   "description": "Date of when the account will auto close. ",
+   "documentation_url": "https://docs.synapsefi.com/intro-to-risk",
    "fieldname": "account_closure_date",
-   "fieldtype": "Date",
-   "label": "Account Closure Date"
+   "fieldtype": "Int",
+   "label": "Account Closure Date",
+   "read_only": 1
   },
   {
-   "default": "Should be linked to docs",
-   "fieldname": "documerts",
-   "fieldtype": "Table",
-   "label": "Documerts",
-   "options": "Synaptic Document"
-  },
-  {
+   "description": "Date of when the user was created.",
    "fieldname": "date_joined",
    "fieldtype": "Date",
    "label": "Date Joined",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "default": "0",
    "fieldname": "extra_security",
    "fieldtype": "Check",
-   "label": "Extra Security"
+   "label": "Extra Security",
+   "read_only": 1
   },
   {
    "default": "0",
+   "description": "If the user profile is a business, the checkbox is checked. Default is not checked.",
    "fieldname": "is_business",
    "fieldtype": "Check",
-   "label": "Is Business"
+   "label": "Is Business (Optional)"
   },
   {
    "default": "0",
    "fieldname": "is_trusted",
    "fieldtype": "Check",
-   "label": "Is Trusted"
+   "label": "Is Trusted",
+   "read_only": 1
   },
   {
+   "description": "Date of when the user was last updated.",
    "fieldname": "last_updated",
    "fieldtype": "Date",
    "label": "Last Updated",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "public_note",
    "fieldtype": "Text",
-   "label": "Public Note"
+   "label": "Public Note",
+   "read_only": 1
   },
   {
+   "description": "Unique platform side identifier",
    "fieldname": "supp_id",
    "fieldtype": "Data",
-   "label": "Supp Id"
+   "label": "Supp Id (Optional)"
   },
   {
+   "description": "If FLAGGED, the user is flagged in our system. Default is NOT-FLAGGED.\nOnly required if you are trying to flag a user.",
    "fieldname": "flag",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Flag",
-   "options": "NOT-FLAGGED"
+   "options": "NOT-FLAGGED\nFLAG"
   },
   {
+   "description": "The reason for user flag. \nOnly required if you are trying to flag a user.",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/user-object-details#possible-flag-codes",
    "fieldname": "flag_code",
-   "fieldtype": "Data",
-   "label": "Flag Code"
+   "fieldtype": "Select",
+   "label": "Flag Code",
+   "options": "NOT_KNOWN\nACCOUNT_CLOSURE|BLOCKED_INDUSTRY\nACCOUNT_CLOSURE|HIGH_RISK\nPENDING_UPLOAD|DOC_REQUEST|CIP\nPENDING_UPLOAD|DOC_REQUEST|UAR\nPENDING_UPLOAD|DOC_REQUEST|SECURITY\nPENDING_REVIEW|DOC_REQUEST|CIP\nPENDING_REVIEW|DOC_REQUEST|UAR\nPENDING_REVIEW|DOC_REQUEST|SECURITY\nPENDING_REVIEW|ACCOUNT_CLOSURE|BLOCKED_INDUSTRY\nPENDING_REVIEW|ACCOUNT_CLOSURE|HIGH_RISK"
   },
   {
    "default": "0",
    "fieldname": "is_hidden",
    "fieldtype": "Check",
-   "label": "Is Hidden"
+   "label": "Is Hidden",
+   "read_only": 1
   },
   {
+   "description": "Legal names the user profile will be using.",
    "fieldname": "legal_names",
    "fieldtype": "Table",
    "label": "Legal Names",
-   "options": "User Legal Name"
+   "options": "User Legal Name",
+   "reqd": 1
   },
   {
    "fieldname": "logins",
@@ -127,27 +135,36 @@
    "options": "Synaptic User Login"
   },
   {
+   "description": "The current permission of the user object. \nDepends. Only required if you are trying to close or lock a user account.",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/user-object-details#possible-user-permissions",
    "fieldname": "permission",
    "fieldtype": "Data",
    "label": "Permission",
-   "options": "UNVERIFIED"
+   "options": "UNVERIFIED\nRECEIVE\nSEND-AND-RECEIVE\nLOCKED\nCLOSED\nMAKE-IT-GO-AWAY"
   },
   {
+   "description": "The reason for user flag. \nOnly required if you are trying to flag a user.",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/user-object-details#possible-permission-codes",
    "fieldname": "permission_code",
    "fieldtype": "Data",
-   "label": "Permission Code"
+   "label": "Permission Code",
+   "options": "UNVERIFIED  \nLOCKED  \nMAKE-IT-GO-AWAY  \nSEND-AND-RECEIVE  \nSEND-AND-RECEIVE-ACH  \nSEND-AND-RECEIVE-WIRE"
   },
   {
+   "description": "Phone number associated with user login credentials.",
    "fieldname": "phone_numbers",
    "fieldtype": "Table",
    "label": "Phone Numbers",
-   "options": "User Phone Number"
+   "options": "User Phone Number",
+   "reqd": 1
   },
   {
+   "description": "Represents if the user is on a meaningful screenings list. ",
    "fieldname": "watchlists",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Watchlists",
-   "options": "PENDING"
+   "options": "NON-WATCHLIST\nPOTENTIAL-MATCH\nMATCH",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_mlil",
@@ -161,12 +178,27 @@
    "fieldname": "synaptic_user_section",
    "fieldtype": "Section Break",
    "label": "Synaptic User"
+  },
+  {
+   "description": "CIP Tag associated with the user.",
+   "documentation_url": "https://docs.synapsefi.com/intro-to-spec-sheets",
+   "fieldname": "cip_tag",
+   "fieldtype": "Int",
+   "label": "Cip Tag (Optional)"
+  },
+  {
+   "default": "Should be linked to docs",
+   "description": "Contains all the KYC information associated with the user profile.",
+   "fieldname": "documents",
+   "fieldtype": "Table",
+   "label": "Documents (Optional)",
+   "options": "Synaptic Document"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_virtual": 1,
  "links": [],
- "modified": "2025-02-05 14:22:42.637330",
+ "modified": "2025-02-05 17:55:12.269998",
  "modified_by": "Administrator",
  "module": "Synapsefi Baas",
  "name": "Synaptic User",

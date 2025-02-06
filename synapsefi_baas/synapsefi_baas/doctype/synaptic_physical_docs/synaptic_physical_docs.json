@@ -9,18 +9,26 @@
   "synaptic_physical_docs_section",
   "document_type",
   "id",
-  "last_updated",
+  "status",
   "country_code",
   "state_code",
-  "status"
+  "column_break_eztd",
+  "sub_type",
+  "last_updated",
+  "document_value"
  ],
  "fields": [
   {
+   "description": "Type of physical document being submitted. ",
    "fieldname": "document_type",
-   "fieldtype": "Data",
-   "label": "Document Type"
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Document Type",
+   "options": "SSN\nPASSPORT\nDRIVERS_LICENSE\nPERSONAL_IDENTIFICATION\nTIN\nBUS_REGISTRATION\nDUNS\nCITIZENSHIP\nSTATE_IDENTIFICATION_FOREIGN\nFATHER_FULL_NAME\nMOTHER_FULL_NAME\nDTI\nNATIONALITY\nOTHER",
+   "reqd": 1
   },
   {
+   "description": "Primary key of the virtual document. This value is a local primary key, meaning, it's only unique within a base document. Different base documents can have same virtual document IDs.\nRequired if you wish to PATCH an existing virtual document",
    "fieldname": "id",
    "fieldtype": "Data",
    "label": "Document ID"
@@ -28,9 +36,12 @@
   {
    "fieldname": "last_updated",
    "fieldtype": "Date",
-   "label": "Last Updated"
+   "label": "Last Updated",
+   "read_only": 1
   },
   {
+   "description": "ISO Alpha-2 formatted Address country code of the issuing country of the virtual document.\nDepends Go to Docs Detail Types response section to see which virtual documents require this field. This field will not be returned in any user responses.",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/allowed-document-types",
    "fieldname": "country_code",
    "fieldtype": "Data",
    "label": "Country Code"
@@ -41,21 +52,43 @@
    "label": "State Code"
   },
   {
+   "description": "Status of the virtual document. ",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/user-object-details#possible-sub-document-status-values",
    "fieldname": "status",
    "fieldtype": "Data",
-   "label": "Status"
+   "label": "Status",
+   "options": "UNVERIFIED\nLOCKED\nAPPROVED\nDENIED\nUNDER_REVIEW\nREQUIRES_ADDITIONAL_INFORMATION\nPENDING",
+   "read_only": 1
   },
   {
    "fieldname": "synaptic_physical_docs_section",
    "fieldtype": "Section Break",
    "label": "Synaptic Physical Docs"
+  },
+  {
+   "description": "Content of the document.",
+   "fieldname": "document_value",
+   "fieldtype": "Text",
+   "in_list_view": 1,
+   "label": "Document Content",
+   "reqd": 1
+  },
+  {
+   "description": "Native government issued name or common name of the document type of issuing country of virtual document. eg for Brazil sole proprietors they may have a \u201cCNPJ\u201d number. This would be the meta.sub_type of BUS_REGISTRATION. Go to Allowed Document Types response section in the info details to see which virtual documents require this field. This field will not be returned in any user responses.\nDepends (Required with usage of BUS_REGISTRATION document type.)",
+   "fieldname": "sub_type",
+   "fieldtype": "Data",
+   "label": "Sub Type"
+  },
+  {
+   "fieldname": "column_break_eztd",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_virtual": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-02-05 14:03:07.405105",
+ "modified": "2025-02-05 18:13:21.007223",
  "modified_by": "Administrator",
  "module": "Synapsefi Baas",
  "name": "Synaptic Physical Docs",

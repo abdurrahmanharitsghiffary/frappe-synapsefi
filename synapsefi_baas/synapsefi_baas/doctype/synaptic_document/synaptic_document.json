@@ -6,22 +6,49 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "entity_scope",
-  "id",
-  "entity_type",
+  "documents_section",
+  "name1",
+  "phone_number",
+  "email",
+  "ip",
+  "year",
+  "month",
+  "day",
+  "title",
+  "entity_relationship",
   "id_score",
   "is_active",
-  "name1",
-  "permission_scope",
-  "physical_docs",
-  "required_edd_docs",
-  "social_docs",
+  "column_break_tdwr",
+  "address_city",
+  "address_country_code",
+  "address_postal_code",
+  "address_subdivision",
   "trust_level",
-  "virtual_docs",
-  "watchlists"
+  "company_activity",
+  "ownership_percentage",
+  "desired_scope",
+  "permission_scope",
+  "required_edd_docs",
+  "column_break_msrj",
+  "entity_scope",
+  "entity_type",
+  "id",
+  "docs_title",
+  "docs_key",
+  "doc_option_key",
+  "alias_optional",
+  "edd_status",
+  "maiden_name",
+  "watchlists",
+  "section_break_zlnq",
+  "physical_docs",
+  "social_docs",
+  "virtual_docs"
  ],
  "fields": [
   {
+   "description": "Industry or profession of business or individual. Go to Allowed Entity Scopes response section to see all the possible values.",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/allowed-entity-scopes",
    "fieldname": "entity_scope",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -29,6 +56,7 @@
    "reqd": 1
   },
   {
+   "description": "Primary key of the base document. This value is a local primary key, meaning, it's only unique within a user object. Different user objects can have same base doc IDs.",
    "fieldname": "id",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -37,6 +65,8 @@
    "reqd": 1
   },
   {
+   "description": "Type of business or gender of the individual. Go to Allowed Entity Types response section to see all the possible values.",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/allowed-entity-types",
    "fieldname": "entity_type",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -44,66 +74,252 @@
    "reqd": 1
   },
   {
+   "description": "Included for an individual's base document (either for business, joint or individual accounts). Value ranges from 0-1. Go to ID Score to learn more.",
+   "documentation_url": "https://docs.synapsefi.com/product-guides/id-score",
    "fieldname": "id_score",
    "fieldtype": "Rating",
-   "label": "ID Score"
+   "label": "ID Score",
+   "read_only": 1
   },
   {
    "default": "0",
+   "description": "If unchecked, base document wont participate in user permission decisioning. Default is checked.",
    "fieldname": "is_active",
    "fieldtype": "Check",
    "label": "Is Active"
   },
   {
+   "description": "Name of the individual/entity associated with this base document.",
    "fieldname": "name1",
    "fieldtype": "Data",
-   "label": "Name"
+   "label": "Name",
+   "reqd": 1
   },
   {
+   "description": "Permission scope of the base document. ",
+   "documentation_url": "https://docs.synapsefi.com/intro-to-spec-sheets",
    "fieldname": "permission_scope",
    "fieldtype": "Data",
-   "label": "Permission Scope"
+   "label": "Permission Scope",
+   "read_only": 1
   },
   {
+   "description": "Physical documents linked to the base document.",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/user-object-details#physical-document-schema",
    "fieldname": "physical_docs",
    "fieldtype": "Table",
    "label": "Physical Docs",
-   "options": "Synaptic Sample Child Table"
+   "options": "Synaptic Physical Docs"
   },
   {
+   "description": "Documents required to decision a flagged user. \nSeparated by comma",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/user-object-details#possible-flag-codes",
    "fieldname": "required_edd_docs",
-   "fieldtype": "Table",
+   "fieldtype": "Data",
    "label": "Required EDD Docs",
-   "options": "Synaptic Sample Child Table"
+   "options": "Synaptic Sample Child Table",
+   "read_only": 1
   },
   {
+   "description": "Social documents linked to the base document. More details below.",
    "fieldname": "social_docs",
    "fieldtype": "Table",
    "label": "Social Docs",
-   "options": "Synaptic Sample Child Table"
+   "options": "Synaptic Social Docs"
   },
   {
+   "description": "Included for an individual's base document (either for business, joint or individual accounts).",
    "fieldname": "trust_level",
-   "fieldtype": "Data",
-   "label": "Trust Level"
+   "fieldtype": "Select",
+   "label": "Trust Level",
+   "options": "low\nmed\nhigh",
+   "read_only": 1
   },
   {
+   "description": "Virtual documents linked to the base document. More details below.",
    "fieldname": "virtual_docs",
    "fieldtype": "Table",
    "label": "Virtual Docs",
-   "options": "Synaptic Sample Child Table"
+   "options": "Synaptic Virtual Docs"
   },
   {
+   "description": "\n",
    "fieldname": "watchlists",
    "fieldtype": "Data",
-   "label": "Watchlists"
+   "label": "Watchlists",
+   "options": "PENDING\nSOFT_MATCH|PENDING_MATCH\nMATCH\nSOFT_MATCH\nNO_MATCH\nFALSE_POSITIVE",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_tdwr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_zlnq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "documents_section",
+   "fieldtype": "Section Break",
+   "label": "Documents"
+  },
+  {
+   "description": "Address city of the business location or individual's residence. If the user wishes to receive mail elsewhere, you can add that as a MAILING_ADDRESS social document. Go to Social Document Schema to learn more. We recommend verifying your address to prevent failure.",
+   "documentation_url": "https://docs.synapsefi.com/api-references/users/user-object-details#social-document-schema",
+   "fieldname": "address_city",
+   "fieldtype": "Data",
+   "label": "Address City",
+   "reqd": 1
+  },
+  {
+   "description": "ISO Alpha-2 formatted Address country code of the business location or individual's residence.",
+   "fieldname": "address_country_code",
+   "fieldtype": "Data",
+   "label": "Address Country Code",
+   "reqd": 1
+  },
+  {
+   "description": "Address zip/postal code of the business location or individual's residence.",
+   "fieldname": "address_postal_code",
+   "fieldtype": "Int",
+   "label": "Address Postal Code",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "description": "Address subdivision (state) of the business location or individual's residence.",
+   "fieldname": "address_subdivision",
+   "fieldtype": "Data",
+   "label": "Address Subdivision",
+   "reqd": 1
+  },
+  {
+   "description": "Common name for the individual/entity.",
+   "fieldname": "alias_optional",
+   "fieldtype": "Data",
+   "label": "Alias (Optional)"
+  },
+  {
+   "description": "Day of entity formation for business or Birth date for individual.",
+   "fieldname": "day",
+   "fieldtype": "Int",
+   "label": "Day",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "description": "Month of entity formation for business or Birth month for individual.",
+   "fieldname": "month",
+   "fieldtype": "Int",
+   "label": "Month",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "description": "Year of entity formation for business or Birth year for individual.",
+   "fieldname": "year",
+   "fieldtype": "Int",
+   "label": "Year",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "company_activity",
+   "fieldtype": "Data",
+   "label": "Company Activity"
+  },
+  {
+   "description": "Desired scope for base document. Go to Intro to Spec Sheet to learn more.",
+   "documentation_url": "https://docs.synapsefi.com/intro-to-spec-sheets",
+   "fieldname": "desired_scope",
+   "fieldtype": "Data",
+   "label": "Desired Scope"
+  },
+  {
+   "description": "The key of the document you intend to submit. Go to Intro to Spec Sheet to learn more.",
+   "documentation_url": "https://docs.synapsefi.com/intro-to-spec-sheets",
+   "fieldname": "doc_option_key",
+   "fieldtype": "Data",
+   "label": "Doc Option Key"
+  },
+  {
+   "description": "The key of the document option you intend to submit. Go to Intro to Spec Sheet to learn more.",
+   "documentation_url": "https://docs.synapsefi.com/intro-to-spec-sheets",
+   "fieldname": "docs_key",
+   "fieldtype": "Data",
+   "label": "Docs Key"
+  },
+  {
+   "description": "The title of the document option you intend to submit. Go to Intro to Spec Sheet to learn more.",
+   "fieldname": "docs_title",
+   "fieldtype": "Data",
+   "label": "Docs Title"
+  },
+  {
+   "description": "Included for business user's business base document. Possible values: VALID, INVALID, REVIEWING. Go to KYC, Risk and Compliance to learn more.",
+   "documentation_url": "https://docs.synapsefi.com/intro-to-risk",
+   "fieldname": "edd_status",
+   "fieldtype": "Select",
+   "label": "Edd Status",
+   "options": "VALID\nINVALID\nREVIEWING",
+   "read_only": 1
+  },
+  {
+   "description": "Email of the individual/entity associated with this base document.",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "reqd": 1
+  },
+  {
+   "description": "Required if individual base doc on business user",
+   "fieldname": "entity_relationship",
+   "fieldtype": "Select",
+   "label": "Entity Relationship",
+   "options": "CONTROLLER_PERSON\nUBO"
+  },
+  {
+   "description": "IP of the individual/entity associated with this base document.",
+   "fieldname": "ip",
+   "fieldtype": "Data",
+   "label": "Ip",
+   "reqd": 1
+  },
+  {
+   "description": "Maiden name of the individual. Helpful to provide this in instances where the individual's maiden name is still associated with their TIN/SSN.",
+   "fieldname": "maiden_name",
+   "fieldtype": "Data",
+   "label": "Maiden Name"
+  },
+  {
+   "description": "Required if individual base doc on business user.\nPercentage of the business owned by the beneficial owner.",
+   "fieldname": "ownership_percentage",
+   "fieldtype": "Int",
+   "label": "Ownership Percentage"
+  },
+  {
+   "description": "Phone number of the individual/entity associated with this base document.",
+   "fieldname": "phone_number",
+   "fieldtype": "Phone",
+   "label": "Phone Number",
+   "reqd": 1
+  },
+  {
+   "description": "Required if individual base doc on business user.\nTitle of the beneficial owner.",
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "column_break_msrj",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_virtual": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-02-05 14:00:48.187709",
+ "modified": "2025-02-07 10:55:47.107674",
  "modified_by": "Administrator",
  "module": "Synapsefi Baas",
  "name": "Synaptic Document",

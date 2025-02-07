@@ -3,6 +3,7 @@
 
 # import frappe
 from frappe.model.document import Document
+from ..synaptic_physical_docs.synaptic_physical_docs import SynapticPhysicalDocs
 from synapsefi_baas.libs.synapsefi_client import SYNAPSEFI_CLIENT
 from synapsefi_baas.utils.to_date import timestamp_to_frappe_date
 from synapsepy.user import User
@@ -33,7 +34,6 @@ class SynapticUser(Document):
 
         for user in users.list_of_users:
             user_temp = SynapticUser.user_to_userdoc(user)
-            # "documerts",
 
             user_lists.append(user_temp)
 
@@ -41,6 +41,7 @@ class SynapticUser(Document):
 
     @staticmethod
     def get_count(args):
+        print(f"ARGS: {args}")
         users = SYNAPSEFI_CLIENT.get_all_users()
 
         return users.users_count
@@ -80,7 +81,7 @@ class SynapticUser(Document):
                 for phone_number in user.body["phone_numbers"]
             ],
             "logins": user.body["logins"],
-            "documerts": [],
+            "documents": [],
         }
 
         return user_temp

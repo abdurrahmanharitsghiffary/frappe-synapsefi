@@ -39,7 +39,7 @@
    "fieldname": "_id",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "User Id",
+   "label": "ID",
    "read_only": 1,
    "unique": 1
   },
@@ -198,7 +198,7 @@
  "index_web_pages_for_search": 1,
  "is_virtual": 1,
  "links": [],
- "modified": "2025-02-05 17:55:12.269998",
+ "modified": "2025-02-07 11:02:29.474762",
  "modified_by": "Administrator",
  "module": "Synapsefi Baas",
  "name": "Synaptic User",

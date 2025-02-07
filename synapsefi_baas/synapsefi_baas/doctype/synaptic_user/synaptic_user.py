@@ -7,6 +7,7 @@ from synapsefi_baas.libs.synapsefi_client import SYNAPSEFI_CLIENT
 from synapsefi_baas.mapper.user import SynapseUserMapper
 from synapsefi_baas.utils.pagination_parser import parse_pagination
 import os
+import frappe
 
 
 class SynapticUser(Document):
@@ -19,7 +20,9 @@ class SynapticUser(Document):
         user = SynapseUserMapper.map_user(d)
         print(f"{user}")
 
-        created_user = SYNAPSEFI_CLIENT.create_user(user, os.getenv("SYNAPSEFI_IP"))
+        created_user = SYNAPSEFI_CLIENT.create_user(
+            user, frappe.conf.get("synapsefi_ip")
+        )
 
     def load_from_db(self):
         user = SYNAPSEFI_CLIENT.get_user(self.name)

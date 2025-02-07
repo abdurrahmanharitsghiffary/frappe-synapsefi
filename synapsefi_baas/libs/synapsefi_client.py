@@ -1,13 +1,18 @@
 import os
 from synapsepy import Client
+import frappe
 
 args = {
-    "client_id": os.getenv("SYNAPSEFI_CLIENT_ID"),
-    "client_secret": os.getenv("SYNAPSEFI_CLIENT_SECRET"),
-    "fingerprint": os.getenv("SYNAPSEFI_FP"),
-    "ip_address": os.getenv("SYNAPSEFI_IP"),  # user's IP
-    "devmode": os.getenv("SYNAPSEFI_DEVELOPMENT_MODE"),  # (optional) default False
-    "logging": os.getenv("SYNAPSEFI_LOGGING"),  # (optional) logs to stdout if True
+    "client_id": frappe.conf.get("synapsefi_client_id"),
+    "client_secret": frappe.conf.get("synapsefi_client_secret"),
+    "fingerprint": frappe.conf.get("synapsefi_fp"),
+    "ip_address": frappe.conf.get("synapsefi_ip"),  # user's IP
+    "devmode": frappe.conf.get(
+        "synapsefi_development_mode"
+    ),  # (optional) default False
+    "logging": frappe.conf.get(
+        "synapsefi_logging"
+    ),  # (optional) logs to stdout if True
 }
 
 SYNAPSEFI_CLIENT = Client(**args)
